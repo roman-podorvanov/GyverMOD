@@ -16,7 +16,7 @@
 //-----------------------------------НАСТРОЙКИ------------------------------------
 #define initial_calibration 0  // калибровка вольтметра 1 - включить, 0 - выключить
 #define displayBrightness 2    // яркость дисплея, значения в диапазоне 0-7, по умолчанию 2
-#define welcome 0              // приветствие (слова GYVER VAPE при включении), 1 - включить, 0 - выключить
+#define welcome 1              // приветствие (слова GYVER VAPE при включении), 1 - включить, 0 - выключить
 #define battery_info 0         // отображение напряжения аккумулятора при запуске, 1 - включить, 0 - выключить
 #define sleep_timer 10         // таймер сна в секундах
 #define vape_threshold 4       // отсечка затяжки, в секундах
@@ -102,10 +102,10 @@ void setup() {
   ohms = EEPROM.readFloat(4);
   my_vcc_const = EEPROM.readFloat(8);
   //----читаем из памяти-----
-
-  Timer1.initialize(1500);          // таймер
-  Timer1.attachInterrupt(timerIsr);
+  
   display.setBrightness(displayBrightness);
+  Timer1.initialize(1500);          // таймер
+  Timer1.attachInterrupt(timerIsr); // хер знает для чего это, но пусть пока будет
   
   //---настройка кнопок и выходов-----
   pinMode(butt_up , INPUT_PULLUP);
@@ -126,6 +126,7 @@ void setup() {
 	  display.print(YVEr);
 	  delay(400);
 	  display.print(VAPE);
+    delay(800);
   }
   //------приветствие-----
 
@@ -548,7 +549,7 @@ void service_mode() {
 // функция вывода моих слов на дисплей
 
 
-void timerIsr()  //нужно для дисплея
+void timerIsr()  //нужно для дисплея //Ну можно было и подробнее прокомментирвать, хуй знает для чего это нужно, но пусть пока будет так.
 {
 	display.print(BLANK);
 }
