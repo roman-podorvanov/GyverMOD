@@ -53,8 +53,8 @@ boolean flag;          // флаг, разрешающий подать ток �
 #include <TimerOne.h>
 #include <TM1637Display_MOD.h>
 #define disp_vcc 13
-#define CLK 5
-#define DIO 4
+#define CLK 7
+#define DIO 8
 TM1637Display display(CLK, DIO);
 //-----------дисплей-----------
 
