@@ -105,7 +105,8 @@ void setup() {
 
   Timer1.initialize(1500);          // таймер
   Timer1.attachInterrupt(timerIsr);
-
+  display.setBrightness(displayBrightness);
+  
   //---настройка кнопок и выходов-----
   pinMode(butt_up , INPUT_PULLUP);
   pinMode(butt_down , INPUT_PULLUP);
