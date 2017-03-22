@@ -12,7 +12,7 @@
 ВО ИЗБЕЖАНИЕ ПРОБЛЕМ ПОЛОЖИТЕ ПАПКУ В КОРЕНЬ ДИСКА С.**
 
 ### Схема подключения, версия 1.2
-![GyverMOD 1.2](https://github.com/AlexGyver/GyverMOD/blob/master/scheme_1.2.jpg)
+![GyverMOD 1.2](https://github.com/roman-podorvanov/GyverMOD/blob/master/images/v1.2/scheme.png)
 
 ### Компоновка, версия 1.2
 ![GyverMOD 1.2](https://github.com/AlexGyver/GyverMOD/blob/master/images/GM%201.2/comp3.jpg)
