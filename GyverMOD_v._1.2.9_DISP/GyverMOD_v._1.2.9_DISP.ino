@@ -201,9 +201,11 @@ void loop() {
       if (round(millis() / 150) % 2 == 0) {
         if (!battery_percent)
 			display.printFloat((float)bat_volt_f/1000, 2); // показать заряд акума в вольтах
-        else 
-			display.printFloat((long)(battery_low-3350)*100/760); // показать заряд акума в процентах поточнее
+        else {
+			long chargePercent = long(battery_low-3350)*100/760;
+			display.printFloat((chargePercent>100)?100:(chargePercent<0)?0:chargePercent); // показать заряд акума в процентах поточнее
             //disp.digit4(map(bat_volt_f, battery_low * 1000, 4200, 0, 99)); // показать заряд акума в процентах
+			}
       }
     }
     if (set_hold && !set_state && set_flag_hold) {  // если удерживалась и была отпущена
