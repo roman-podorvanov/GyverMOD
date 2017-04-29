@@ -105,7 +105,6 @@ void setup() {
   
   display.setBrightness(displayBrightness);
   Timer1.initialize(1500);          // таймер
-  Timer1.attachInterrupt(timerIsr); // хер знает для чего это, но пусть пока будет
   
   //---настройка кнопок и выходов-----
   pinMode(butt_up , INPUT_PULLUP);
@@ -545,14 +544,6 @@ void service_mode() {
   }
 }
 //----------режим теста кнопок----------
-
-// функция вывода моих слов на дисплей
-
-
-void timerIsr()  //нужно для дисплея //Ну можно было и подробнее прокомментирвать, хуй знает для чего это нужно, но пусть пока будет так.
-{
-	display.print(BLANK);
-}
 
 void calibration() {
   //--------калибровка----------
