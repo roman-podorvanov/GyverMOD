@@ -367,7 +367,13 @@ void loop() {
           PWM_f = PWM_filter_k * PWM + (1 - PWM_filter_k) * PWM_old;  // фильтруем
           PWM_old = PWM_f;                                            // фильтруем
         }
-        Timer1.pwm(mosfet, PWM_f);                                    // управление мосфетом
+	  if (mode == 1) { // если ВАРИВатт 
+	  PWM = (float)sqrt(watts * ohms) * 1000 / bat_volt_f * 1024; // считаем значение для ШИМ сигнала 
+	  if (PWM > 1023) PWM = 1023; // ограничил PWM "по тупому", потому что constrain сука не работает! 
+	  PWM_f = PWM_filter_k * PWM + (1 - PWM_filter_k) * PWM_old; // фильтруем 
+	  PWM_old = PWM_f; // фильтруем 
+	} 
+	Timer1.pwm(mosfet, PWM_f);                                    // управление мосфетом
       }
       if (vape_mode == 2 && turbo_mode) {                             // турбо режим парения (если включен)
         (round(millis() / 50) % 2 == 0)?display.print(vape1):display.print(vape2);	// мигать быстро
