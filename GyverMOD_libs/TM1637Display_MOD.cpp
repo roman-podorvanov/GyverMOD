@@ -138,7 +138,13 @@ void TM1637Display::showNumberDecEx(int num, uint8_t dots, bool leading_zero,
   uint8_t digits[4];
 	const static int divisors[] = { 1, 10, 100, 1000 };
 	bool leading = true;
-
+	bool negative = false;
+	
+	if (num < 0) {
+		num = num*-1;
+		negative = true;
+	}
+	
 	for(int8_t k = 0; k < 4; k++) {
 	    int divisor = divisors[4 - 1 - k];
 		int d = num / divisor;
@@ -148,7 +154,10 @@ void TM1637Display::showNumberDecEx(int num, uint8_t dots, bool leading_zero,
 		  if ((leading_zero && k > 0) || !leading || (k == 3))
 		      digit = encodeDigit(d);
 	      else
-		      digit = 0;
+			  if (negative)
+				  digit = 0b01000000;
+			  else
+				digit = 0;
 		}
 		else {
 			digit = encodeDigit(d);
